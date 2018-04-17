@@ -4,6 +4,8 @@ package java8.ex04;
 import java8.data.Account;
 import java8.data.Data;
 import java8.data.Person;
+import java8.ex02.Lambda_02_Test.PersonToAccountMapper;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -51,13 +53,25 @@ public class Lambda_04_Test {
         private FuncCollection<T> filter(GenericPredicate<T> predicate) {
             FuncCollection<T> result = new FuncCollection<>();
             
-            // TODO
+            for(T t : list){
+            	if(predicate.test(t))
+            	{
+            		result.add(t);
+            		
+            	}
+            }
+            
+   
             return result;
         }
 
         private <E> FuncCollection<E> map(GenericMapper<T, E> mapper) {
             FuncCollection<E> result = new FuncCollection<>();
-            // TODO
+            for (T t : list) {
+            	result.add((E) ((GenericMapper<T, E>) t).map(t));
+            	
+    			
+    		}
             return result;
         }
 

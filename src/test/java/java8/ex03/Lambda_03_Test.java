@@ -23,8 +23,8 @@ public class Lambda_03_Test {
     // tag::forEach[]
     private void forEach(List<Person> source, PersonProcessor processor) {
        for (Person person : source) {
-		processor.process(person);
-	}
+    	   processor.process(person);
+       	}
     }
     // end::forEach[]
 
@@ -41,7 +41,6 @@ public class Lambda_03_Test {
         
         PersonProcessor verifyPerson = new PersonProcessor() {
 			
-			@Override
 			public void process(Person p) {
 				 
 				assertTrue(p.getAge() > 0);
