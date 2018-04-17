@@ -39,6 +39,7 @@ public class Lambda_02_Test {
     public void test_map_person_to_account() throws Exception {
 
         List<Person> personList = Data.buildPersonList(100);
+       
         PersonToAccountMapper ptam = p -> {
 				Account a = new Account();
 				a.setBalance(100);

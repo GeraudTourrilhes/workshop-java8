@@ -4,6 +4,7 @@ import java8.data.Data;
 import java8.data.Person;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -63,7 +64,7 @@ public class Lambda_01_Test {
         List<Person> personList = Data.buildPersonList(100);
 
         // TODO result ne doit contenir que des personnes dont le prénom est "first_10"
-        PersonPredicate predicate = p -> p.getFirstname().equals("first_10");
+        PersonPredicate predicate = p -> StringUtils.equals(p.getFirstname(), "first_10");
         List<Person> result = filter(personList, predicate);
 
         assertThat(result.size(), is(1));
@@ -81,7 +82,7 @@ public class Lambda_01_Test {
 
         // TODO result ne doit contenir que les personnes dont l'age est > 49 et dont le hash du mot de passe correspond à la valeur de la variable passwordSha512Hex
         // TODO Pour obtenir le hash d'un mot, utiliser la méthode DigestUtils.sha512Hex(mot)
-        PersonPredicate predicate = p -> p.getAge() > 49  &&  DigestUtils.sha512Hex(p.getPassword()).equals(passwordSha512Hex);
+        PersonPredicate predicate = p -> p.getAge() > 49  &&  StringUtils.equals(DigestUtils.sha512Hex(p.getPassword()), passwordSha512Hex);
 			
         List<Person> result = filter(personList, predicate);
 
