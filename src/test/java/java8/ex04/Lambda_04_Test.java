@@ -1,6 +1,7 @@
 package java8.ex04;
 
 
+import java8.data.Account;
 import java8.data.Data;
 import java8.data.Person;
 import org.junit.Test;
@@ -16,15 +17,17 @@ public class Lambda_04_Test {
 
     // tag::interfaces[]
     interface GenericPredicate<T> {
+    	 boolean test(T t);
         // TODO
     }
 
     interface GenericMapper<T, E> {
+    	E map(T t);
         // TODO
     }
 
     interface Processor<T> {
-        // TODO
+    	void process(T t);
     }
     // end::interfaces[]
 
@@ -47,6 +50,7 @@ public class Lambda_04_Test {
         // tag::methods[]
         private FuncCollection<T> filter(GenericPredicate<T> predicate) {
             FuncCollection<T> result = new FuncCollection<>();
+            
             // TODO
             return result;
         }
@@ -92,6 +96,7 @@ public class Lambda_04_Test {
         List<Person> personList = Data.buildPersonList(100);
         FuncCollection<Person> personFuncCollection = new FuncCollection<>();
         personFuncCollection.addAll(personList);
+        
 
         // TODO créer un variable filterByAge de type GenericPredicate
         // TODO filtrer, ne garder uniquement que les personnes ayant un age > 50

@@ -17,19 +17,19 @@ import static org.junit.Assert.*;
 public class Lambda_02_Test {
 
     // tag::PersonToAccountMapper[]
-    interface PersonToAccountMapper {
-        Account map(Person p);
+    interface PersonToAccountMapper <T> {
+        T map(Person person);
     }
     // end::PersonToAccountMapper[]
 
     // tag::map[]
-    private List<Account> map(List<Person> personList, PersonToAccountMapper mapper) {
-    	ArrayList<Account> accountList = new ArrayList<Account>();
+    private  <T, E> List<E> map(List<Person> personList, T t) {
+    	ArrayList<E> result = new ArrayList<E>();
         for (Person person : personList) {
-        	accountList.add(mapper.map(person));
+        	result.add((E) ((PersonToAccountMapper<T>) t).map(person));
 			
 		}
-        return accountList;
+        return result;
     }
     // end::map[]
 
@@ -40,11 +40,11 @@ public class Lambda_02_Test {
 
         List<Person> personList = Data.buildPersonList(100);
        
-        PersonToAccountMapper ptam = p -> {
-				Account a = new Account();
-				a.setBalance(100);
-				a.setOwner(p);
-				return a;
+        PersonToAccountMapper<Account> ptam = p -> {
+				Account account = new Account();
+				account.setBalance(100);
+				account.setOwner(p);
+				return account;
 			};
 
         // TODO transformer la liste de personnes en liste de comptes
@@ -62,14 +62,13 @@ public class Lambda_02_Test {
     public void test_map_person_to_firstname() throws Exception {
 
         List<Person> personList = Data.buildPersonList(100);
-
+        
+        
+        
         // TODO transformer la liste de personnes en liste de prénoms
         ArrayList<String> stringList =  new ArrayList<String>();
-        for (Person person : personList) {
-        	stringList.add(person.getFirstname());
-			
-		}
-        List<String> result = stringList;
+        PersonToAccountMapper<String> ptam = p -> p.getFirstname();
+        List<String> result = map(personList, ptam);
 
         assertThat(result, hasSize(personList.size()));
         assertThat(result, everyItem(instanceOf(String.class)));
