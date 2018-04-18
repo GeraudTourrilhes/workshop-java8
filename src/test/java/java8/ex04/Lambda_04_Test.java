@@ -109,7 +109,7 @@ public class Lambda_04_Test {
         		})
                 // TODO vérifier que chaque compte a un solde à 1000.
                 // TODO vérifier que chaque titulaire de compte a un age > 50
-                .forEach(p -> assertTrue(p.getBalance() == 1000 && p.getOwner().getAge() > 50));
+                .forEach(a -> assertTrue(a.getBalance() == 1000 && a.getOwner().getAge() > 50));
     }
     // end::test_filter_map_forEach[]
 
@@ -126,7 +126,6 @@ public class Lambda_04_Test {
         // TODO filtrer, ne garder uniquement que les personnes ayant un age > 50
         // ??? filterByAge = ???;
         GenericPredicate<Person> filterByAge = t -> t.getAge() > 50;
-
         // TODO créer un variable mapToAccount de type GenericMapper
         // TODO transformer la liste de personnes en liste de comptes. Un compte a par défaut un solde à 1000.
         // ??? mapToAccount = ???;
@@ -137,11 +136,12 @@ public class Lambda_04_Test {
 			return account;
 		};
 
-        // TODO créer un variable verifyAccount de type GenericMapper
+        // TODO créer un variable verifyAccount de type Processor
         // TODO vérifier que chaque compte a un solde à 1000.
         // TODO vérifier que chaque titulaire de compte a un age > 50
         // ??? verifyAccount = ???;
-		Processor<Account> verifyAccount = p -> assertTrue(p.getBalance() == 1000 && p.getOwner().getAge() > 50);
+		Processor<Account> verifyAccount = a -> assertTrue(a.getBalance() == 1000 && a.getOwner().getAge() > 50);
+		
 
         // TODO Décommenter
         personFuncCollection

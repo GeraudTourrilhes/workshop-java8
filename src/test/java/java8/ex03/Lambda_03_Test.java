@@ -39,18 +39,8 @@ public class Lambda_03_Test {
         // TODO vérifier qu'une personne à un nom qui commence par last
         // TODO vérifier qu'une personne à un age > 0
         
-        PersonProcessor verifyPerson = new PersonProcessor() {
-			
-			public void process(Person p) {
-				 
-				assertTrue(p.getAge() > 0);
-				assertTrue(p.getFirstname().startsWith("first"));
-				assertTrue(p.getLastname().startsWith("last"));
+        PersonProcessor verifyPerson = p -> assertTrue(p.getAge() > 0 && p.getFirstname().startsWith("first") && p.getLastname().startsWith("last"));
 
-					
-				
-			}
-		};
         
 
         assertThat(verifyPerson, notNullValue());
