@@ -19,13 +19,14 @@ public class DateAndTime_07_Test {
     public void test_date_to_localdate() throws Exception {
 
         // TODO Créer une date Java 1 (12/02/2017)
-        Date date = null;
+        Date date = new Date(2017, 02, 12);
 
         // TODO transformer la date en Instant
+        date.toInstant();
 
         // TODO transformer la date en LocalDate
 
-        LocalDate result = null;
+        LocalDate result = LocalDate.parse(date.toLocaleString());
 
         // TODO valoriser les différentes variables afin de rendre le test passant
 
