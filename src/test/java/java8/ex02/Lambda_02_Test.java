@@ -3,6 +3,7 @@ package java8.ex02;
 import java8.data.Account;
 import java8.data.Data;
 import java8.data.Person;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -23,13 +24,16 @@ public class Lambda_02_Test {
     // end::PersonToAccountMapper[]
 
     // tag::map[]
-    private  <T, E> List<E> map(List<Person> personList, T t) {
-    	ArrayList<E> result = new ArrayList<E>();
-        for (Person person : personList) {
-        	result.add((E) ((PersonToAccountMapper<T>) t).map(person));
-			
+    private  <T> List<T> map(List<Person> personList, PersonToAccountMapper<T> t) {
+    	ArrayList<T> result = new ArrayList<>();
+        for (Person person : personList) 
+        {
+        	result.add(t.map(person));
 		}
         return result;
+        
+ 
+        	
     }
     // end::map[]
 
