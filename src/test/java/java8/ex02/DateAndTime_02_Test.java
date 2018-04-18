@@ -77,7 +77,7 @@ public class DateAndTime_02_Test {
         // TODO utiliser la méthode of
         LocalDate localDate = LocalDate.of(2015, 03, 11);
         
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy  h:m:s");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy  hh:mm:ss");
 
         // TODO Formatter la date pour avoir l'affichage suivant : "11/03/2015 00:00:00"
         localDate.format(formatter);
